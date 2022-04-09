@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import platformRoutes from './routers/platforms';
 import 'express-async-errors';
 import cors from 'cors';
+import db from './database/connection';
 
 class App {
   private app: Express;
@@ -13,6 +14,7 @@ class App {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || '3001';
+    this.dbConnection();
     this.middlewares()
     this.routes();
   }
@@ -21,6 +23,15 @@ class App {
     this.app.listen(this.port, () => {
       console.log(`Server online in port ${this.port}`)
     });
+  }
+
+  async dbConnection():Promise <void>{
+    try {
+      await db.authenticate();
+      console.log('Database online')
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   middlewares(): void {
