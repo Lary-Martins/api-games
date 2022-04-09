@@ -1,5 +1,8 @@
-import app from './app';
+import dotenv from 'dotenv';
+import App from './app';
 
-app.listen(process.env.PORT, () => {
-  console.log('Server online');
-});
+dotenv.config();
+
+const server = new App();
+
+server.listen();
