@@ -8,3 +8,8 @@ export const getAllPlatforms = async (_req: Request, res: Response, _next: NextF
   
   res.status(StatusCodes.OK).json(getPlatforms);
 };
+
+export const getOnePlatform = (req: Request, res: Response, _next: NextFunction) => {
+  const { id } = req.params;
+  res.status(StatusCodes.OK).json({body:'platforms', id});
+};
