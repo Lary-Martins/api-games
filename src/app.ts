@@ -1,5 +1,7 @@
 import express, { Express } from 'express';
 import platformRoutes from './routers/platforms';
+import 'express-async-errors';
+import cors from 'cors';
 
 class App {
   private app: Express;
@@ -11,6 +13,7 @@ class App {
   constructor() {
     this.app = express();
     this.port = process.env.PORT || '3001';
+    this.middlewares()
     this.routes();
   }
 
@@ -19,6 +22,12 @@ class App {
       console.log(`Server online in port ${this.port}`)
     });
   }
+
+  middlewares(): void {
+    this.app.use(cors())
+    this.app.use(express.json());
+  }
+
   routes(): void {
     this.app.use(this.apiRoutes.platform, platformRoutes)
   }
