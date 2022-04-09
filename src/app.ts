@@ -1,7 +1,22 @@
-import express from 'express';
+import express, { Express } from 'express';
 
-const app = express();
+class App {
+  private app: Express;
+  private port: string;
+  private apiRoutes = {
+    platform: '/platform'
+  }
 
-app.use(express.json());
+  constructor() {
+    this.app = express();
+    this.port = process.env.PORT || '3001';
+  }
 
-export default app;
+  listen(): void {
+    this.app.listen(this.port, () => {
+      console.log(`Server online in port ${this.port}`)
+    });
+  }
+}
+
+export default App;
