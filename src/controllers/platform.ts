@@ -24,3 +24,8 @@ export const updatePlatform = (req: Request, res: Response, _next: NextFunction)
   const { body } = req;
   res.status(StatusCodes.OK).json({body, id, put: 'request Put'});
 };
+
+export const deletePlatform = (req: Request, res: Response, _next: NextFunction) => {
+  const { id } = req.params;
+  res.status(StatusCodes.OK).json({delete: 'request Delete', id});
+};
