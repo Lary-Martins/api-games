@@ -18,3 +18,9 @@ export const postPlatform = (req: Request, res: Response, _next: NextFunction) =
   const { body } = req;
   res.status(StatusCodes.OK).json({body, post: 'request Post'});
 };
+
+export const updatePlatform = (req: Request, res: Response, _next: NextFunction) => {
+  const { id } = req.params;
+  const { body } = req;
+  res.status(StatusCodes.OK).json({body, id, put: 'request Put'});
+};
