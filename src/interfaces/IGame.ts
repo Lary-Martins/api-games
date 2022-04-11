@@ -3,6 +3,5 @@ export interface IGame {
   name: string,
   description: string,
   price: number,
-  platformId: string,
-  createdAt: Date
+  platformId: string
 }
