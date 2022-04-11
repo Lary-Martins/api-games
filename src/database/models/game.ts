@@ -31,7 +31,6 @@ Game.init({
   platformId: {
     type: DataTypes.UUIDV4,
     allowNull: false,
-
   }
 }, {
   sequelize: db,
