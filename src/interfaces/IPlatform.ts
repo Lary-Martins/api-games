@@ -1,5 +1,4 @@
 import { StatusCodes } from 'http-status-codes';
-// import { Code } from '../utils/StatusCodeEnum';
 
 export interface IPlatform {
   id: string,
