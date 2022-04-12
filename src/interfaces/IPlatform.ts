@@ -13,6 +13,7 @@ export interface IPlatformResponse {
 export interface IPlatformRepository {
   getAll(): Promise<IPlatform[]> | null;
   getOne(id: string): Promise<IPlatform | null> | null;
+  savePlatform(name: string): Promise<IPlatform | null>
 }
 
 export interface IPlatformService {
