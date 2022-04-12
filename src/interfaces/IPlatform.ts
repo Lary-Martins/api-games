@@ -1,6 +1,14 @@
+import { StatusCodes } from 'http-status-codes';
+// import { Code } from '../utils/StatusCodeEnum';
+
 export interface IPlatform {
   id: string,
   name: string,
+}
+
+export interface IPlatformResponse {
+  code: StatusCodes,
+  data: IPlatform[] | IPlatform | string
 }
 
 export interface IPlatformRepository {
