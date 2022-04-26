@@ -1,11 +1,11 @@
-import { PlatformRepository } from '../repositories/PlatformRepository';
-import { IPlatformService } from '../interfaces/IPlatform';
+import { IPlatformRepository, IPlatformService } from '../interfaces/IPlatform';
 import { StatusCodes } from 'http-status-codes';
 
 export class PlatformService implements IPlatformService {
+  private platformRepository: IPlatformRepository
 
-  constructor( private platformRepository: PlatformRepository) {
-    this.platformRepository = new PlatformRepository
+  constructor( platformRepository: IPlatformRepository) {
+    this.platformRepository = platformRepository
   }
 
   async getAll() {
