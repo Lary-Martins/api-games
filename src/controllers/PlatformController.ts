@@ -1,27 +1,38 @@
 import { Request, Response } from 'express';
+import { platformServiceFactory } from '../factory/PlatformFactory';
 import { PlatformService } from '../services/PlatformService';
-import { PlatformRepository } from '../repositories/PlatformRepository';
 
-export const getAllPlatform = async( _req: Request, res: Response ) => {
-  try {
-    const platformService = new PlatformService(new PlatformRepository);
-    const response = await platformService.getAll();
-    res.status(response.code).json(response.data);
-  } catch (error) { 
-    const message = error as string;
-    console.log(message)
+export class PlatformController {
+
+  private platformServiceFactory: PlatformService;
+
+  constructor( ) {
+    this.platformServiceFactory = platformServiceFactory();
+    
+    this.getAllPlatform = this.getAllPlatform.bind(this);
+    this.getOnePlatform = this.getOnePlatform.bind(this);
   }
-}
 
-export const getOnePlatform = async( req: Request, res: Response ) => {
-  const { id } = req.params;
-
-  try {
-    const platformService = new PlatformService(new PlatformRepository);
-    const response = await platformService.getOne(id);
-    res.status(response.code).json(response.data);
-  } catch (error) { 
-    const message = error as string;
-    console.log(message)
+  async getAllPlatform( _req: Request, res: Response ): Promise<void> {
+    try {
+      const response = await this.platformServiceFactory.getAll();
+      res.status(response.code).json(response.data);
+    } catch (error) { 
+      const message = error as string;
+      console.log(message)
+    }
   }
+
+  async getOnePlatform( req: Request, res: Response ): Promise<void> {
+    const { id } = req.params;
+    
+    try {
+      const response = await this.platformServiceFactory.getOne(id);
+      res.status(response.code).json(response.data);
+    } catch (error) { 
+      const message = error as string;
+      console.log(message)
+    }
+  }
+
 }
