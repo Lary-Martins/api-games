@@ -11,7 +11,7 @@ export interface IPlatformResponse {
 }
 
 export interface IPlatformRepository {
-  getAll(): Promise<IPlatform[]> | null;
+  getAll(): Promise<IPlatform[]>;
   getOne(id: string): Promise<IPlatform | null> | null;
   savePlatform(name: string): Promise<IPlatform | null>
 }
