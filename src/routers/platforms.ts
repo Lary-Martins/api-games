@@ -1,12 +1,12 @@
 import { Router } from 'express';
-import { getAllPlatform, getOnePlatform } from '../controllers/PlatformController';
+import { PlatformController } from '../controllers/PlatformController';
 
 const platformRoutes = Router();
 
-// const platformController = new PlatformController;
+const platformController = new PlatformController;
 
-platformRoutes.get('/',    getAllPlatform);
-platformRoutes.get('/:id', getOnePlatform);
+platformRoutes.get('/',    platformController.getAllPlatform);
+platformRoutes.get('/:id', platformController.getOnePlatform);
 
 /* platformRoutes.post('/',      postPlatform);
 platformRoutes.put('/:id',    updatePlatform);
