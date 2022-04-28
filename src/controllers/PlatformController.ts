@@ -11,6 +11,7 @@ export class PlatformController {
     this.getAllPlatform = this.getAllPlatform.bind(this);
     this.getOnePlatform = this.getOnePlatform.bind(this);
     this.savePlatform = this.savePlatform.bind(this);
+    this.updatePlatform = this.updatePlatform.bind(this);
   }
 
   async getAllPlatform(_req: Request, res: Response): Promise<void> {
