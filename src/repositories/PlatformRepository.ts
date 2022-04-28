@@ -1,5 +1,6 @@
 import Platform from '../database/models/platform';
 import { IPlatformRepository } from '../interfaces/IPlatform';
+import { v4 } from 'uuid';
 
 export class PlatformRepository implements IPlatformRepository {
   async getAll() {
@@ -24,7 +25,7 @@ export class PlatformRepository implements IPlatformRepository {
 
   async save(name: string) {
     try {
-      const newPlatform = { name, id: uuid() };
+      const newPlatform = { id: v4(), name };
       await Platform.create(newPlatform);
       return newPlatform;
     } catch (error) {
