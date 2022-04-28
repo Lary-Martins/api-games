@@ -3,10 +3,9 @@ import { platformServiceFactory } from '../factory/PlatformFactory';
 import { PlatformService } from '../services/PlatformService';
 
 export class PlatformController {
-
   private platformServiceFactory: PlatformService;
 
-  constructor( ) {
+  constructor() {
     this.platformServiceFactory = platformServiceFactory();
 
     this.getAllPlatform = this.getAllPlatform.bind(this);
@@ -14,37 +13,37 @@ export class PlatformController {
     this.savePlatform = this.savePlatform.bind(this);
   }
 
-  async getAllPlatform( _req: Request, res: Response ): Promise<void> {
+  async getAllPlatform(_req: Request, res: Response): Promise<void> {
     try {
       const response = await this.platformServiceFactory.getAll();
       res.status(response.code).json(response.data);
-    } catch (error) { 
+    } catch (error) {
       const message = error as string;
-      console.log(message)
+      console.log(message);
     }
   }
 
-  async getOnePlatform( req: Request, res: Response ): Promise<void> {
+  async getOnePlatform(req: Request, res: Response): Promise<void> {
     const { id } = req.params;
-    
+
     try {
       const response = await this.platformServiceFactory.getOne(id);
       res.status(response.code).json(response.data);
-    } catch (error) { 
+    } catch (error) {
       const message = error as string;
-      console.log(message)
+      console.log(message);
     }
   }
 
-  async savePlatform( req: Request, res: Response ): Promise<void> {
+  async savePlatform(req: Request, res: Response): Promise<void> {
     const { name } = req.body;
-    
+
     try {
       const response = await this.platformServiceFactory.save(name);
       res.status(response.code).json(response.data);
-    } catch (error) { 
+    } catch (error) {
       const message = error as string;
-      console.log(message)
+      console.log(message);
     }
   }
 
