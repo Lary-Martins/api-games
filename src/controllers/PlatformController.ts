@@ -48,4 +48,16 @@ export class PlatformController {
     }
   }
 
+  async updatePlatform(req: Request, res: Response): Promise<void> {
+    const { id } = req.params;
+    const { name } = req.body;
+
+    try {
+      const response = await this.platformServiceFactory.update(id, name);
+      res.status(response.code).json(response.data);
+    } catch (error) {
+      const message = error as string;
+      console.log(message);
+    }
+  }
 }
