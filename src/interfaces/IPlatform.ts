@@ -24,4 +24,5 @@ export interface IPlatformService {
   getOne(id: string): Promise<IPlatformResponse>;
   save(name: string): Promise<IPlatformResponse>;
   update(id: string, name: string): Promise<IPlatformResponse>;
+  remove(id: string): Promise<IPlatformResponse>
 }
