@@ -23,6 +23,16 @@ export class PlatformRepository implements IPlatformRepository {
    }
   }
 
+  async getByName(name: string) {
+    try {
+      const data = await Platform.findOne({where: {name}});
+      return data;
+    } catch (error) {
+      const message = error as string;
+      throw new Error(message);
+   }
+  }
+
   async save(name: string) {
     try {
       const newPlatform = { id: v4(), name };
