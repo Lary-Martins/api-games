@@ -54,4 +54,13 @@ export class PlatformRepository implements IPlatformRepository {
       throw new Error(message);
     }
   }
+
+  async remove(id:string) {
+    try {
+      await Platform.destroy({ where: { id } });
+    } catch (error) {
+      const message = error as string;
+      throw new Error(message);
+    }
+  }
 }
