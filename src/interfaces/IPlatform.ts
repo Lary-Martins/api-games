@@ -19,4 +19,5 @@ export interface IPlatformRepository {
 export interface IPlatformService {
   getAll(): Promise<IPlatformResponse>;
   getOne(id: string): Promise<IPlatformResponse>;
+  save(name: string): Promise<IPlatformResponse>;
 }
