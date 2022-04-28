@@ -8,9 +8,10 @@ export class PlatformController {
 
   constructor( ) {
     this.platformServiceFactory = platformServiceFactory();
-    
+
     this.getAllPlatform = this.getAllPlatform.bind(this);
     this.getOnePlatform = this.getOnePlatform.bind(this);
+    this.savePlatform = this.savePlatform.bind(this);
   }
 
   async getAllPlatform( _req: Request, res: Response ): Promise<void> {
@@ -28,6 +29,18 @@ export class PlatformController {
     
     try {
       const response = await this.platformServiceFactory.getOne(id);
+      res.status(response.code).json(response.data);
+    } catch (error) { 
+      const message = error as string;
+      console.log(message)
+    }
+  }
+
+  async savePlatform( req: Request, res: Response ): Promise<void> {
+    const { name } = req.body;
+    
+    try {
+      const response = await this.platformServiceFactory.save(name);
       res.status(response.code).json(response.data);
     } catch (error) { 
       const message = error as string;
