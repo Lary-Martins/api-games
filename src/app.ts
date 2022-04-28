@@ -2,6 +2,7 @@ import express, { Express } from 'express';
 import platformRoutes from './routers/platforms';
 import 'express-async-errors';
 import cors from 'cors';
+import { internalError } from './middleware/internalError';
 import db from './database/connection';
 
 class App {
@@ -17,6 +18,7 @@ class App {
     this.dbConnection();
     this.middlewares()
     this.routes();
+    this.errorHandler();
   }
 
   listen(): void {
@@ -41,6 +43,10 @@ class App {
 
   routes(): void {
     this.app.use(this.apiRoutes.platform, platformRoutes)
+  }
+
+  errorHandler(): void {
+    this.app.use(internalError);
   }
 }
 
