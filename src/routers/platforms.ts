@@ -8,6 +8,7 @@ const platformController = new PlatformController;
 platformRoutes.get('/',    platformController.getAllPlatform);
 platformRoutes.get('/:id', platformController.getOnePlatform);
 platformRoutes.post('/',   platformController.savePlatform);
+platformRoutes.put('/:id', platformController.updatePlatform);
 
 /* platformRoutes.post('/',      postPlatform);
 platformRoutes.put('/:id',    updatePlatform);
