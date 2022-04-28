@@ -16,6 +16,7 @@ export interface IPlatformRepository {
   getOne(id: string): Promise<IPlatform | null> | null;
   save(name: string): Promise<IPlatform | null>;
   update(id: string, name: string): Promise<IPlatform | null>;
+  remove(id: string): Promise<void>;
 }
 
 export interface IPlatformService {
