@@ -43,4 +43,19 @@ export class PlatformService implements IPlatformService {
       throw new Error(message);
     }
   }
+
+  async update(id: string, name: string) {
+    try {
+      const platformFound = await this.platformRepository.getOne(id);
+      if (platformFound) {
+        return { code: StatusCodes.NOT_FOUND, data: 'Platform not found' }
+      }
+      
+      const data = await this.platformRepository.update(id, name);
+      return { code: StatusCodes.ACCEPTED, data }
+    } catch (error) {
+      const message = error as string;
+      throw new Error(message);
+    }
+  }
 }
