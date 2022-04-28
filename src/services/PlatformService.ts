@@ -31,6 +31,11 @@ export class PlatformService implements IPlatformService {
 
   async save(name: string) {
     try {
+      const platformFound = await this.platformRepository.getByName(name);
+      if (platformFound) {
+        return { code: StatusCodes.CONFLICT, data: 'Platform already exists' }
+      }
+      
       const data = await this.platformRepository.save(name);
       return { code: StatusCodes.CREATED, data }
     } catch (error) {
