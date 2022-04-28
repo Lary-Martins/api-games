@@ -47,7 +47,7 @@ export class PlatformService implements IPlatformService {
   async update(id: string, name: string) {
     try {
       const platformFound = await this.platformRepository.getOne(id);
-      if (platformFound) {
+      if (!platformFound) {
         return { code: StatusCodes.NOT_FOUND, data: 'Platform not found' }
       }
       
