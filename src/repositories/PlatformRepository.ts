@@ -1,9 +1,8 @@
 import Platform from '../database/models/platform';
-import { IPlatform, IPlatformRepository } from '../interfaces/IPlatform';
-import { uuid } from 'uuidv4';
+import { IPlatformRepository } from '../interfaces/IPlatform';
 
 export class PlatformRepository implements IPlatformRepository {
-  async getAll(): Promise<IPlatform[]> {
+  async getAll() {
     try {
       const data = await Platform.findAll();
       return data
@@ -13,7 +12,7 @@ export class PlatformRepository implements IPlatformRepository {
     }
   }
 
-  async getOne(id: string): Promise<IPlatform | null> {
+  async getOne(id: string) {
     try {
       const data = await Platform.findByPk(id);
       return data;
@@ -23,7 +22,7 @@ export class PlatformRepository implements IPlatformRepository {
    }
   }
 
-  async savePlatform(name: string): Promise<IPlatform | null> {
+  async save(name: string) {
     try {
       const newPlatform = { name, id: uuid() };
       await Platform.create(newPlatform);
