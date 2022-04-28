@@ -9,10 +9,7 @@ platformRoutes.get('/',    platformController.getAllPlatform);
 platformRoutes.get('/:id', platformController.getOnePlatform);
 platformRoutes.post('/',   platformController.savePlatform);
 platformRoutes.put('/:id', platformController.updatePlatform);
+platformRoutes.delete('/:id', platformController.removePlatform);
 
-/* platformRoutes.post('/',      postPlatform);
-platformRoutes.put('/:id',    updatePlatform);
-platformRoutes.delete('/:id', deletePlatform);
- */
 
 export default platformRoutes;
