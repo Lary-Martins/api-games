@@ -21,7 +21,7 @@ export class PlatformController {
       res.status(response.code).json(response.data);
     } catch (error) {
       const message = error as string;
-      console.log(message);
+      throw new Error(message);
     }
   }
 
@@ -33,7 +33,7 @@ export class PlatformController {
       res.status(response.code).json(response.data);
     } catch (error) {
       const message = error as string;
-      console.log(message);
+      throw new Error(message);
     }
   }
 
@@ -45,7 +45,7 @@ export class PlatformController {
       res.status(response.code).json(response.data);
     } catch (error) {
       const message = error as string;
-      console.log(message);
+      throw new Error(message);
     }
   }
 
@@ -58,7 +58,7 @@ export class PlatformController {
       res.status(response.code).json(response.data);
     } catch (error) {
       const message = error as string;
-      console.log(message);
+      throw new Error(message);
     }
   }
 
@@ -69,7 +69,7 @@ export class PlatformController {
       res.status(response.code).json(response.data);
     } catch (error) {
       const message = error as string;
-      console.log(message);
+      throw new Error(message);
     }
   }
 }
