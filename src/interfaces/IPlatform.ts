@@ -4,10 +4,10 @@ export interface IPlatform {
   id: string,
   name: string,
 }
-
+// implementar um generic aqui 
 export interface IPlatformResponse {
   code: StatusCodes,
-  data: IPlatform[] | IPlatform | string
+  data: IPlatform[] | IPlatform | string | null
 }
 
 export interface IPlatformRepository {
