@@ -28,4 +28,14 @@ export class PlatformService implements IPlatformService {
       throw new Error(message);
     }
   }
+
+  async save(name: string) {
+    try {
+      const data = await this.platformRepository.save(name);
+      return { code: StatusCodes.CREATED, data }
+    } catch (error) {
+      const message = error as string;
+      throw new Error(message);
+    }
+  }
 }
