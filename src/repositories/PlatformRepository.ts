@@ -43,4 +43,15 @@ export class PlatformRepository implements IPlatformRepository {
       throw new Error(message);
    }
   }
+
+  async update(id: string, name: string) {
+    try{
+      await Platform.update({ name }, { where: { id } });
+      const updatedPlatform = { id, name };
+      return updatedPlatform;
+    } catch (error) {
+      const message = error as string;
+      throw new Error(message);
+    }
+  }
 }
