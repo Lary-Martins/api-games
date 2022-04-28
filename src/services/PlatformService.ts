@@ -58,4 +58,19 @@ export class PlatformService implements IPlatformService {
       throw new Error(message);
     }
   }
+
+  async remove(id: string) {
+    try {
+      const platformFound = await this.platformRepository.getOne(id);
+      if (!platformFound) {
+        return { code: StatusCodes.NOT_FOUND, data: 'Platform not found' }
+      }
+      
+      await this.platformRepository.remove(id);
+      return { code: StatusCodes.ACCEPTED, data: 'Platform deleted' }
+    } catch (error) {
+      const message = error as string;
+      throw new Error(message);
+    } 
+  }
 }
